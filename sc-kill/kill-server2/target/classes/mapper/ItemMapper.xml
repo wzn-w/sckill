@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.killserver2.mapper.ItemMapper">
+
+    <update id="reduceItem" parameterType="string">
+        update item_kill
+        set total = total - 1
+        where item_id = (select id from item where code = #{code})
+    </update>
+
+    <update id="addItem" parameterType="string">
+        update item_kill
+        set total = total + 1
+        where item_id = (select id from item where code = #{code})
+    </update>
+
+    <select id="selectItem" resultType="map" parameterType="string">
+        select item.*, item_kill.total
+        from item, item_kill
+        WHERE item.code = #{code}
+    </select>
+
+    <select id="selectItemCodes" resultType="map">
+        select code
+        FROM item
+    </select>
+
+    <select id="selectItemKillId" resultType="map" parameterType="int">
+        select id
+        from item_kill
+        where item_id = #{itemId}
+    </select>
+
+    <insert id="insertItemSuccess" parameterType="com.killserver2.entity.ItemKillSuccess">
+        insert
+        into item_kill_success
+        values(#{code}, #{itemId}, #{killId}, #{userId}, #{price}, #{status}, #{createTime})
+    </insert>
+</mapper>

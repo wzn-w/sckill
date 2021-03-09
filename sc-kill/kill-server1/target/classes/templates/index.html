@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商城</title>
+<link type="text/css" href="css/css.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+<script src="js/wb.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/MagicZoom.js" type="text/javascript"></script>
+ <script src="/js/vue.js"></script>
+ <script src="/js/axios.js"></script>
+
+</head>
+
+<body>
+
+ <div id="app">
+  <div class="mianCont">
+   <div class="top">
+   <span class="topRight">
+    <a href="vip.html">我的17</a>&nbsp;|
+    <a href="order.html">我的订单</a>&nbsp;|
+    <a href="login.html">会员中心</a>&nbsp;|
+    <a href="contact.html">联系我们</a>
+   </span>
+   </div><!--top/-->
+
+   <div class="lsg">
+    <h1 class="logo"><a href="index.html"><img src="images/logo.png" width="217" height="90" /></a></h1>
+    <form action="#" method="get" class="subBox">
+     <div class="subBoxDiv">
+      <input type="text" class="subLeft" />
+      <input type="image" src="images/subimg.png" width="63" height="34" class="sub" />
+
+     </div><!--subBoxDiv/-->
+    </form><!--subBox/-->
+
+   </div><!--lsg/-->
+
+   <div class="pnt">
+    <div class="pntLeft">
+     <h2 class="Title">所有商品
+
+     </h2>
+    </div><!--pntLeft/-->
+    <div class="pntRight">
+     <ul class="nav">
+      <li>商城首页</li>
+      <li>会员中心</li>
+      <li>帮助中心</li>
+      <div class="clears"></div>
+     </ul><!--nav/-->
+    </div><!--pntRight/-->
+    <div class="clears"></div>
+   </div><!--pnt/-->
+
+   <div class="positions">
+    当前位置：<a href="index.html">首页</a> &gt; <a href="#" class="posCur">促销商品</a>
+   </div><!--positions/-->
+
+   <div class="cont">
+    <div class="contLeft">
+    </div><!--contLeft/-->
+    <div class="contRight" style="border:0;">
+     <div class="proBox">
+      <div id="tsShopContainer">
+       <div id="tsImgS"><a href="images/01.jpg" title="Images" class="MagicZoom" id="MagicZoom"><img width="300" height="300" src="images/01.jpg" /></a></div>
+       <div id="tsPicContainer">
+        <div id="tsImgSArrL" onclick="tsScrollArrLeft()"></div>
+        <div id="tsImgSCon">
+         <ul>
+          <li onclick="showPic(0)" rel="MagicZoom" class="tsSelectImg"><img height="42" width="42" src="images/01.jpg" tsImgS="images/01.jpg" /></li>
+          <li onclick="showPic(1)" rel="MagicZoom"><img height="42" width="42" src="images/02.jpg" tsImgS="images/02.jpg" /></li>
+          <li onclick="showPic(2)" rel="MagicZoom"><img height="42" width="42" src="images/03.jpg" tsImgS="images/03.jpg" /></li>
+          <li onclick="showPic(3)" rel="MagicZoom"><img height="42" width="42" src="images/04.jpg" tsImgS="images/04.jpg" /></li>
+          <li onclick="showPic(4)" rel="MagicZoom"><img height="42" width="42" src="images/05.jpg" tsImgS="images/05.jpg" /></li>
+          <li onclick="showPic(5)" rel="MagicZoom"><img height="42" width="42" src="images/06.jpg" tsImgS="images/06.jpg" /></li>
+          <li onclick="showPic(6)" rel="MagicZoom"><img height="42" width="42" src="images/07.jpg" tsImgS="images/07.jpg" /></li>
+          <li onclick="showPic(7)" rel="MagicZoom"><img height="42" width="42" src="images/08.jpg" tsImgS="images/08.jpg" /></li>
+          <li onclick="showPic(8)" rel="MagicZoom"><img height="42" width="42" src="images/09.jpg" tsImgS="images/09.jpg" /></li>
+          <li onclick="showPic(9)" rel="MagicZoom"><img height="42" width="42" src="images/10.gif" tsImgS="images/10.gif" /></li>
+          <li onclick="showPic(10)" rel="MagicZoom"><img height="42" width="42" src="images/11.gif" tsImgS="images/10.gif" /></li>
+         </ul>
+        </div>
+        <div id="tsImgSArrR" onclick="tsScrollArrRight()"></div>
+       </div>
+       <img class="MagicZoomLoading" width="16" height="16" src="images/loading.gif" alt="Loading..." />
+       <!--<script src="js/ShopShow.js"></script>-->
+      </div><!--tsShopContainer/-->
+      <div class="proBoxRight">
+       <h3 class="proTitle">{{itemData.name}}</h3>
+       <div>商品编号： {{itemData.code}} </div>
+       <div>秒杀价：<strong class="red">¥{{itemData.price}}</strong> </div>
+       <div>单位：箱 </div>
+       <div>库存:<br/><strong class="red">[有货] </strong> 从上海发货</div>
+       <div class="shuliang2">
+        数量： <input type="text" value="1" />
+       </div><!--shuliang2/-->
+       <div class="gc">
+        <br/><br/>
+        <a href="javascript:void(0);" @click="buyItem()"><img src="images/goumai.png" width="117"  height="36" /></a>&nbsp;&nbsp;
+        <img src="images/shoucang.png" width="117" height="36" />
+       </div><!--gc/-->
+      </div><!--proRight/-->
+      <div class="clears"></div>
+     </div><!--proBox/-->
+
+     <ul class="fangyuan">
+      <li>商品描述</li>
+      <li>商品参数</li>
+      <li>商品评论</li>
+      <li>商品晒图</li>
+      <div class="clears"></div>
+     </ul><!--fangyuan/-->
+     <div class="fangList">
+      <div class="fangPar">
+
+      </div><!--fangPar/-->
+      <img src="images/05.jpg" width="756" height="310" />
+     </div><!--fangList/-->
+     <div class="fangList">
+      商品参数
+     </div><!--fangList/-->
+     <div class="fangList">
+      商品评论
+     </div><!--fangList/-->
+     <div class="fangList">
+      <img src="images/rdPro1.jpg" width="132" height="129" /><br /><br />
+      <img src="images/rdPro2.jpg" width="132" height="129" /><br /><br />
+      <img src="images/rdPro3.jpg" width="132" height="129" /><br /><br />
+      <img src="images/rdPro4.jpg" width="132" height="129" /><br /><br />
+      <img src="images/rdPro5.jpg" width="132" height="129" /><br /><br />
+     </div><!--fangList/-->
+    </div><!--contRight/-->
+    <div class="clears"></div>
+   </div><!--cont/-->
+
+   <!--尾部-->
+   <div class="inHelp">
+    <div class="inHLeft">
+     <h4>帮助中心</h4>
+     <ul class="inHeList">
+      <li><a href="help.html">购物指南</a></li>
+      <li><a href="help.html">支付方式</a></li>
+      <li><a href="help.html">售后服务</a></li>
+      <li><a href="about.html">企业简介</a></li>
+      <div class="clears"></div>
+     </ul><!--inHeList/-->
+    </div><!--inHLeft/-->
+    <div class="inHLeft">
+     <h4>会员服务</h4>
+     <ul class="inHeList">
+      <li><a href="reg.html">会员注册</a></li>
+      <li><a href="login.html">会员登录</a></li>
+      <li><a href="order.html">购物车</a></li>
+      <li><a href="order.html">我的订单</a></li>
+      <div class="clears"></div>
+     </ul><!--inHeList/-->
+    </div><!--inHLeft/-->
+    <div class="inHRight">
+     <h4>全国统一免费服务热线</h4>
+     <div class="telBox">400-0000-0000</div>
+     <div class="weibo">
+     </div>
+    </div><!--inHRight/-->
+    <div class="clears"></div>
+   </div><!--inHelp/-->
+   <div class="footer">
+    <p>
+     <a href="#">进入17官网</a>&nbsp;|&nbsp;
+     <a href="index.html">商城首页</a>&nbsp;|&nbsp;
+     <a href="product.html">促销中心</a>&nbsp;|&nbsp;
+     <a href="order.html">我的订单</a>&nbsp;|&nbsp;
+     <a href="new.html">新闻动态</a>&nbsp;|&nbsp;
+     <a href="login.html">会员中心</a>&nbsp;|&nbsp;
+     <a href="help.htmll">帮助中心</a>
+    </p>
+    <p>
+     版权所有：上海17实业有限公司 版权所有  Copyright 2010-2015   沪ICP备00000000号   <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+    </p>
+   </div><!--footer/-->
+  </div><!--mianCont/-->
+  <a href="#" class="backTop">&nbsp;</a>
+ </div>
+
+ <script>
+     var vm = new Vue({
+         el:"#app",
+         data:{
+             status: 0,
+             code: "1001000005",
+             itemData: {}
+         },
+         //渲染成html后执行
+         mounted(){
+             this.getItem(this.code);
+         },
+         methods:{
+             // 购买商品
+             buyItem:function(){
+                 var url='/startItemKill';
+                 var that = this;
+                 axios.get(url, {
+                     params:{
+                         code: "1001000005"
+                     }
+                 }).then(function (response) {
+                     that.status = response.data.status;
+                     alert("购买成功");
+                     console.log(that.status);
+                     console.log(response.data.status);
+                 }).catch(function (error) {
+
+                 })
+             },
+
+             getItem:function (code) {
+                 var url='/getItem';
+                 var that = this;
+                 axios.get(url, {
+                     params:{
+                         "code": code
+                     }
+                 }).then(function (response) {
+                     that.itemData = response.data;
+                     console.log(that.itemData);
+                 }).catch(function (error) {
+
+                 })
+             },
+         },
+     });
+ </script>
+
+</body>
+
+</html>

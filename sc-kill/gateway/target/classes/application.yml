@@ -1,0 +1,41 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: spring-cloud-zuul
+
+eureka:
+  client:
+    service-url:
+      # 填写注册中心服务器地址
+      defaultZone: http://localhost:8081/eureka
+    # 是否需要将自己注册到注册中心
+    register-with-eureka: true
+    # 是否需要搜索服务信息
+    fetch-registry: true
+  instance:
+    # 使用ip地址注册到注册中心
+    prefer-ip-address: true
+    # 注册中心列表中显示的状态参数
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000000
+
+ribbon:
+  ReadTimeout: 6000000
+  ConnectTimeout: 6000000
+
+zuul:
+  routes:
+    serverkill:
+      path: /**
+      url: service-object-a
+  host:
+    connect-timeout-millis: 6000000
+    socket-timeout-millis: 6000000
